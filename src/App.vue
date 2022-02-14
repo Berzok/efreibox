@@ -1,12 +1,12 @@
 <template>
 
   <div class="min-vh-100 d-flex flex-column">
-    <Header v-show="this.isLogged"/>
+    <Header v-if="true"/>
     <Spinner/>
     <div class="niwa-wrapper flex-fill">
       <Navbar v-if="false"/>
-      <NiwaContainer v-if="this.isLogged"></NiwaContainer>
-      <router-view v-else></router-view>
+      <router-view v-if="this.$route.name === 'login'"></router-view>
+      <NiwaContainer v-else></NiwaContainer>
     </div>
   </div>
 </template>
@@ -19,10 +19,12 @@ import Navbar from './components/Navbar.vue';
 import {useUserStore} from './store/user';
 import {mapActions, mapState} from "pinia";
 import NiwaContainer from "./components/NiwaContainer";
+import Authenticate from "./components/authenticate/Authenticate";
 
 export default defineComponent({
     name: 'App',
     components: {
+        Authenticate,
         NiwaContainer,
         Header,
         Spinner,

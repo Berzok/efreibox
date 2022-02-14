@@ -18,7 +18,7 @@
         </div>
       </router-link>
 
-      <router-link v-if="true" to="/structure" class="nav-link h-100 btn-primary">
+      <router-link v-if="this.isLogged" to="/structure" class="nav-link h-100 btn-primary">
         <div class="d-flex flex-column text-center">
           <span class="fas fa-archive"></span>
           Structure
@@ -26,8 +26,11 @@
       </router-link>
 
       <div class="my-auto">
-        <button @click="logout" class="btn btn-primary z-1">
+        <button v-if="this.isLogged" @click="logout" class="btn btn-primary z-1">
           Déconnexion
+        </button>
+        <button v-else @click="login" class="btn btn-primary z-1">
+          Connexion
         </button>
       </div>
 
@@ -42,6 +45,7 @@ import {useUserStore} from '../store/user';
 import Button from 'primevue/button';
 import Card from 'primevue/card';
 import router, {HOME_PAGE_NAME} from "../router";
+import {mapState} from "pinia";
 
 
 export default defineComponent({
@@ -50,7 +54,18 @@ export default defineComponent({
         Button,
         Card
     },
+    computed: {
+        // gives access to this.counter inside the component and allows setting it
+        // this.counter++
+        // same as reading from store.counter
+        ...mapState(useUserStore, ['isLogged'])
+    },
     methods: {
+        login(){
+            router.push({
+                name: 'login'
+            });
+        },
         logout() {
             const userStore = useUserStore();
             userStore.logout();

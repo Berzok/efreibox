@@ -13,9 +13,10 @@ const routes = [
     {
         path: '/home',
         name: 'Home',
+        alias: '',
         component: List,
         meta: {
-            requiresAuth: true,
+            requiresAuth: false,
             title: 'Books'
         },
         children: [
@@ -23,7 +24,7 @@ const routes = [
                 path: ':fullpath*',
                 alias: '',
                 name: 'folder',
-                meta: {requiresAuth: true},
+                meta: {requiresAuth: false},
                 component: Folder,
             }
         ]

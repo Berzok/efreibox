@@ -1,5 +1,5 @@
 <template>
-  <div id="authenticate" class="d-flex align-items-center vh-100">
+  <div id="authenticate" class="d-flex align-items-center flex-fill">
     <router-view class="mx-auto"/>
   </div>
 </template>
@@ -13,3 +13,9 @@ export default defineComponent({
     props: {},
 });
 </script>
+
+<style>
+#authenticate{
+    height: 75vh;
+}
+</style>

@@ -66,7 +66,7 @@ export default defineComponent({
                 let yap = await this.userStore.checkToken();
                 if(yap){
                     router.push({
-                        name: 'Home'
+                        name: 'folder'
                     });
                 }
                 console.dir(yap);
@@ -81,7 +81,7 @@ export default defineComponent({
             //this.toast.success(`Welcome ${this.login}`);
 
             router.push({
-                name: 'Home'
+                name: 'folder'
             });
         },
     },

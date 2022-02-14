@@ -142,6 +142,9 @@ export default defineComponent({
     },
     async mounted() {
         this.userStore = useUserStore();
+        if(!this.$route.params.fullpath === undefined){
+            this.$route.params.fullpath = '';
+        }
         if(this.$route.params.fullpath.length >= 1){
             await this.fetchFolderByPath();
         }
